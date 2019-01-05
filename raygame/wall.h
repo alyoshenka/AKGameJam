@@ -7,8 +7,8 @@ struct wall
 	static const int cnt = 12;
 	Texture2D walls[cnt];
 
-	int w;
-	int h;
+	float w;
+	float h;
 
 	Vector2 pos;
 	Rectangle rec;

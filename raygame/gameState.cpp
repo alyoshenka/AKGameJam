@@ -24,13 +24,10 @@ gameState::gameState()
 	creditsDoor.pos = { 600.0f, (float)creditsDoor.closed.height };
 	creditsDoor.text = "Credits";
 	testChest.pos = { 200, 100 };
-	e.pos = { 300, 200 };
-	f.pos = {300, 400};
-	w.pos = {10, 10};
+	w.pos = {50, 200};
+	w.update(16 * 3, 16);
 
 	// temp fix
-	e.rec.x = e.pos.x;
-	e.rec.y = e.pos.y;
 	testChest.rec.y = testChest.pos.y;
 	testChest.rec.x = testChest.pos.x;
 
@@ -39,7 +36,6 @@ gameState::gameState()
 	collisions = new Rectangle[colsLen];
 
 	collisions[0] = testChest.rec;
-	collisions[1] = e.rec;
 	// walls
 	Rectangle l = {0, 0, 32, GetScreenHeight()};
 	collisions[2] = l;
@@ -49,7 +45,9 @@ gameState::gameState()
 	collisions[4] = t;
 	t.height = 96;
 	t.y = GetScreenHeight() - t.height;
-	collisions[5] = t;
+	collisions[1] = t;
+
+	collisions[5] = w.rec;
 
 	colsUsed = 6;
 
@@ -67,6 +65,11 @@ gameState::gameState()
 void gameState::mainMenu()
 {
 	// update
+	if (guy.curHealth <= 0)
+	{
+		state = GameOver;
+	}
+
 	if (startDoor.ready)
 	{
 		// init next state
@@ -83,8 +86,6 @@ void gameState::mainMenu()
 	startDoor.update(&guy);
 	creditsDoor.update(&guy);
 	testChest.update(&guy);
-	e.update(&guy);
-	f.update(&guy);
 
 	guy.update(collisions, colsUsed);
 
@@ -100,14 +101,14 @@ void gameState::mainMenu()
 	startDoor.draw();
 	creditsDoor.draw();
 	testChest.draw();
-	e.draw();
-	f.draw();
 	w.draw();
 
 	guy.draw();
 
 	// menu stuff
 	// DrawText("GAME NAME HERE", 250, 250, 40, WHITE);
+	std::string coords = std::to_string((int)GetMouseX()) + ", " + std::to_string((int)GetMouseY());
+	DrawText(coords.c_str(), GetMouseX() - 30, GetMouseY() - 20, 10, WHITE);
 
 	EndDrawing();
 }
@@ -115,7 +116,7 @@ void gameState::mainMenu()
 void gameState::room1()
 {
 	// update
-	if (IsKeyPressed(KEY_SPACE))
+	if (guy.curHealth <= 0)
 	{
 		state = GameOver;
 	}

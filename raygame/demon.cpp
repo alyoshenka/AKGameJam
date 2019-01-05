@@ -4,10 +4,10 @@ demon::demon()
 {
 	animLen = 4;
 	idleAnim = new Texture2D[animLen];
-	idleAnim[0] = LoadTexture("assets/big_demon_idle_anim_f0.png");
-	idleAnim[1] = LoadTexture("assets/big_demon_idle_anim_f1.png");
-	idleAnim[2] = LoadTexture("assets/big_demon_idle_anim_f2.png");
-	idleAnim[3] = LoadTexture("assets/big_demon_idle_anim_f3.png");
+	idleAnim[0] = LoadTexture("assets/demon/big_demon_idle_anim_f0.png");
+	idleAnim[1] = LoadTexture("assets/demon/big_demon_idle_anim_f1.png");
+	idleAnim[2] = LoadTexture("assets/demon/big_demon_idle_anim_f2.png");
+	idleAnim[3] = LoadTexture("assets/demon/big_demon_idle_anim_f3.png");
 
 	curFrame = 0;
 	animFrameTime = 0.2f;

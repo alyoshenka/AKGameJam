@@ -7,16 +7,16 @@ chest::chest()
 	fullAnim = new Texture2D[animLen];
 	emptyAnim = new Texture2D[animLen];
 	coinAnim = new Texture2D[coinAnimLen];
-	fullAnim[0] = LoadTexture("assets/chest_full_open_anim_f0.png");
-	fullAnim[1] = LoadTexture("assets/chest_full_open_anim_f1.png");
-	fullAnim[2] = LoadTexture("assets/chest_full_open_anim_f2.png");
-	emptyAnim[0] = LoadTexture("assets/chest_empty_open_anim_f0.png");
-	emptyAnim[1] = LoadTexture("assets/chest_empty_open_anim_f1.png");
-	emptyAnim[2] = LoadTexture("assets/chest_empty_open_anim_f2.png");
-	coinAnim[0] = LoadTexture("assets/coin_anim_f0.png");
-	coinAnim[1] = LoadTexture("assets/coin_anim_f1.png");
-	coinAnim[2] = LoadTexture("assets/coin_anim_f2.png");
-	coinAnim[3] = LoadTexture("assets/coin_anim_f3.png");
+	fullAnim[0] = LoadTexture("assets/chest/chest_full_open_anim_f0.png");
+	fullAnim[1] = LoadTexture("assets/chest/chest_full_open_anim_f1.png");
+	fullAnim[2] = LoadTexture("assets/chest/chest_full_open_anim_f2.png");
+	emptyAnim[0] = LoadTexture("assets/chest/chest_empty_open_anim_f0.png");
+	emptyAnim[1] = LoadTexture("assets/chest/chest_empty_open_anim_f1.png");
+	emptyAnim[2] = LoadTexture("assets/chest/chest_empty_open_anim_f2.png");
+	coinAnim[0] = LoadTexture("assets/chest/coin_anim_f0.png");
+	coinAnim[1] = LoadTexture("assets/chest/coin_anim_f1.png");
+	coinAnim[2] = LoadTexture("assets/chest/coin_anim_f2.png");
+	coinAnim[3] = LoadTexture("assets/chest/coin_anim_f3.png");
 	coinAnim[4] = coinAnim[0];
 
 	curFrame = 0;

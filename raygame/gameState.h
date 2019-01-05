@@ -19,23 +19,19 @@ enum State
 // what are the potential drawbacks of this implementation?
 
 // use floor tiles to spell name
-// player stats ui
-// setPos func will update rec as well
 // render order
-// knife collision
 // organize all the shit
 // redo state machine because i can't think through things well
 // drawFloor and randomizeFloorTiles in parent
-// texture manager
+// texture manager -> later
 // separate weapon classes -> array of weapons?
 // dynamic array to manage demon recs
 // fuck how do pointers work
 // we could always just move the collision boxes...
+// resetDemons(pos) + health
 
 // pass player around to enemy classes with pointers
 // to modify values
-
-// wand sweep attack
 
 // this singleton class manages the use of
 // the current game state
@@ -62,8 +58,6 @@ class gameState
 	door startDoor;
 	door creditsDoor;
 	chest testChest;
-	demon e;
-	demon f;
 	wall w;
 
 	Rectangle * collisions;

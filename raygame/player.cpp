@@ -7,18 +7,18 @@ player::player()
 	idleSprites = new Texture2D[spriteCnt];
 	runSprites = new Texture2D[spriteCnt];
 
-	idleSprites[0] = LoadTexture("assets/elf_m_idle_anim_f0.png");
-	idleSprites[1] = LoadTexture("assets/elf_m_idle_anim_f1.png");
-	idleSprites[2] = LoadTexture("assets/elf_m_idle_anim_f2.png");
-	idleSprites[3] = LoadTexture("assets/elf_m_idle_anim_f3.png");
+	idleSprites[0] = LoadTexture("assets/player/elf_m_idle_anim_f0.png");
+	idleSprites[1] = LoadTexture("assets/player/elf_m_idle_anim_f1.png");
+	idleSprites[2] = LoadTexture("assets/player/elf_m_idle_anim_f2.png");
+	idleSprites[3] = LoadTexture("assets/player/elf_m_idle_anim_f3.png");
 
-	runSprites[0] = LoadTexture("assets/elf_m_run_anim_f0.png");
-	runSprites[1] = LoadTexture("assets/elf_m_run_anim_f1.png");
-	runSprites[2] = LoadTexture("assets/elf_m_run_anim_f2.png");
-	runSprites[3] = LoadTexture("assets/elf_m_run_anim_f3.png");
+	runSprites[0] = LoadTexture("assets/player/elf_m_run_anim_f0.png");
+	runSprites[1] = LoadTexture("assets/player/elf_m_run_anim_f1.png");
+	runSprites[2] = LoadTexture("assets/player/elf_m_run_anim_f2.png");
+	runSprites[3] = LoadTexture("assets/player/elf_m_run_anim_f3.png");
 
-	bulletSprite = LoadTexture("assets/weapon_knife.png");
-	staff = LoadTexture("assets/weapon_green_magic_staff.png");
+	bulletSprite = LoadTexture("assets/player/weapon_knife.png");
+	staff = LoadTexture("assets/player/weapon_green_magic_staff.png");
 
 	curSprite = 0;
 	animSpeed = 0.2;
@@ -150,7 +150,7 @@ void player::update(Rectangle * cols, int len)
 	}
 
 	// shooting
-	if (IsKeyPressed(KEY_P))
+	if (IsMouseButtonPressed(0))
 	{
 		// check for unused
 		for (int i = 0; i < maxShots; i++)
@@ -192,7 +192,7 @@ void player::update(Rectangle * cols, int len)
 		}
 	}
 
-	if (IsKeyPressed(KEY_O))
+	if (IsMouseButtonPressed(1))
 	{
 		staffIsHolding = true;
 	}

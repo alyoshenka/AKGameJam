@@ -16,9 +16,9 @@ wall::wall()
 	walls[11] = LoadTexture("assets/walls/wall_top_right.png");
 
 	pos = {0, 0};
-	w = 0;
-	h = 0;
-	rec = {pos.x, pos.y, (float)w, (float)h};
+	w = 16.0f * 3;
+	h = 16.0f;
+	rec = {pos.x, pos.y + 1.5f * h, w, h / 2.0f};
 }
 
 wall::~wall()
@@ -36,18 +36,18 @@ void wall::update(int _w, int _h)
 	w = _w;
 	h = _h;
 	rec.width = w;
-	rec.height = h;
+	rec.height = h / 2.0f;
+
+	rec.x = pos.x;
+	rec.y = pos.y + 1.5f * h;
 }
 
 void wall::draw()
 {
-	int curX = pos.x;
-	int curY = pos.y;
-	DrawTexture(walls[7], curX, curY, WHITE);
-	curY += walls[7].height;
-	DrawTexture(walls[5], curX, curY, WHITE);
-	curY += walls[5].height;
-	DrawTexture(walls[3], curX, curY, WHITE);
-	curX += walls[5].width;
-	curY = pos.y;
+	DrawTexture(walls[9], pos.x, pos.y, WHITE);
+	DrawTexture(walls[0], pos.x, pos.y + walls[0].height, WHITE);
+	DrawTexture(walls[10], pos.x + walls[0].width, pos.y, WHITE);
+	DrawTexture(walls[1], pos.x + walls[0].width, pos.y + walls[0].height, WHITE);
+	DrawTexture(walls[11], pos.x + walls[0].width * 2, pos.y, WHITE);
+	DrawTexture(walls[2], pos.x + walls[0].width * 2, pos.y + walls[0].height, WHITE);
 }
