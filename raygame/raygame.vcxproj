@@ -134,19 +134,27 @@
     <ClCompile Include="chest.cpp" />
     <ClCompile Include="demon.cpp" />
     <ClCompile Include="door.cpp" />
+    <ClCompile Include="gameOverState.cpp" />
     <ClCompile Include="gameState.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="menuState.cpp" />
     <ClCompile Include="particleEffect.cpp" />
     <ClCompile Include="player.cpp" />
+    <ClCompile Include="tutorial1State.cpp" />
+    <ClCompile Include="tutorial2State.cpp" />
     <ClCompile Include="wall.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="chest.h" />
     <ClInclude Include="demon.h" />
     <ClInclude Include="door.h" />
+    <ClInclude Include="gameOverState.h" />
     <ClInclude Include="gameState.h" />
+    <ClInclude Include="menuState.h" />
     <ClInclude Include="particleEffect.h" />
     <ClInclude Include="player.h" />
+    <ClInclude Include="tutorial1State.h" />
+    <ClInclude Include="tutorial2State.h" />
     <ClInclude Include="wall.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

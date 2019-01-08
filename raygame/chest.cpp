@@ -103,8 +103,8 @@ void chest::update(player * p)
 		isOpen = false;
 	}
 
-	rec.x = pos.x;
-	rec.y = pos.y;
+	// rec.x = pos.x;
+	// rec.y = pos.y;
 }
 
 void chest::draw()
@@ -135,5 +135,12 @@ void chest::draw()
 	{
 		DrawTexture(coinAnim[coinCurFrame], pos.x + 5, pos.y - yOffset, WHITE);
 	}
+}
+
+void chest::setPos(Vector2 _pos)
+{
+	pos = _pos;
+	rec.x = pos.x;
+	rec.y = pos.y;
 }
 

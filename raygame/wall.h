@@ -4,7 +4,7 @@
 struct wall
 {
 	// always 12
-	static const int cnt = 12;
+	static const int cnt = 2;
 	Texture2D walls[cnt];
 
 	float w;
@@ -14,6 +14,7 @@ struct wall
 	Rectangle rec;
 
 	wall();
+	wall(float _x, float _y, float _w, float _h);
 	~wall();
 
 	void update(int _w, int _h);

@@ -16,7 +16,7 @@ door::door()
 	isEntered = false;
 	elapsedTime = 0.0f;
 	transitionTime = 1.0f;
-	text = "insert text here";
+	title = "insert text here";
 	ready = false;
 
 	rec = {pos.x + open.width / 2, pos.y - open.height / 2, 
@@ -73,6 +73,8 @@ void door::draw()
 	}
 	else
 	{
+		// black void into next room
+		DrawRectangleRec({ pos.x + left.width + colMid.width, pos.y + 4, 30, 25 }, BLACK);
 		// open door is dumb		
 		DrawTexture(top, pos.x + left.width + colMid.width, pos.y - top.height, WHITE);
 		DrawTexture(left, pos.x + colMid.width, pos.y, WHITE);
@@ -85,7 +87,7 @@ void door::draw()
 	drawCol(pos.x + colMid.width + left.width + open.width + right.width - mod, pos.y);
 
 	int sz = 5;
-	DrawText(text.c_str(), pos.x + sz * 3, pos.y - sz * 3, sz, WHITE);
+	DrawText(title.c_str(), pos.x + sz * 3, pos.y - sz * 3, sz, WHITE);
 }
 
 void door::drawCol(int x, int y)
@@ -93,4 +95,11 @@ void door::drawCol(int x, int y)
 	DrawTexture(colTop, x, y, WHITE);
 	DrawTexture(colMid, x, y + colTop.height, WHITE);
 	DrawTexture(colBase, x, y + colTop.height + colMid.height, WHITE);
+}
+
+void door::setPos(Vector2 _pos)
+{
+	pos = _pos;
+	rec.x = pos.x;
+	rec.y = pos.y;
 }

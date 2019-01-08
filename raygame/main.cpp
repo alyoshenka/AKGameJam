@@ -1,19 +1,12 @@
 #include "raylib.h"
-#include "gameState.h"
+// #include "menuState.h"
+
+#include "tutorial2State.h"
+
+#include <string>
 
 int main()
 {
-
-	int i = 5;
-	int * ip = &i;
-	std::cout << i << std::endl;
-	std::cout << &i << std::endl;
-	std::cout << ip << std::endl;
-	std::cout << &ip << std::endl;
-	std::cout << *ip << std::endl;
-
-	// return 0;
-
 	// Initialization
 	//--------------------------------------------------------------------------------------
 	int screenWidth = 960;
@@ -21,7 +14,10 @@ int main()
 
 	InitWindow(screenWidth, screenHeight, "AKGJ");
 
-	gameState gs = gameState::getInstance();
+	/*gameState * stateInstance = new menuState();
+	GameStates currentState = MAINMENU;*/
+	gameState * stateInstance = new tutorial2State();
+	GameStates currentState = TUTORIAL2;
 
 	SetTargetFPS(60);
 	//--------------------------------------------------------------------------------------
@@ -29,10 +25,37 @@ int main()
 	// Main game loop
 	while (!WindowShouldClose())    // Detect window close button or ESC key
 	{
-		gs.go();
+		// go to next state
+		GameStates nextState = stateInstance->next();
+		// if different state
+		if (nextState != currentState) {
+			// get new one
+			delete stateInstance;
+			// set up new one
+			setupGameState(stateInstance, nextState);
+			// make new = current
+			currentState = nextState;
+			continue;
+		}
+
+		// update state
+		stateInstance->update();
+
+		BeginDrawing();
+		ClearBackground(BLACK);
+
+		stateInstance->draw();
+
+		std::string pos = std::to_string((int)GetMouseX()) + ", " + std::to_string((int)GetMouseY());
+		DrawText(pos.c_str(), GetMouseX(), GetMouseY() - 10, 10, WHITE);
+
+		EndDrawing();
 	}
 
 	// De-Initialization
+
+	delete stateInstance;
+
 	//--------------------------------------------------------------------------------------   
 	CloseWindow();        // Close window and OpenGL context
 	//--------------------------------------------------------------------------------------

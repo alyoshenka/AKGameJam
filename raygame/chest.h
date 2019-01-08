@@ -6,6 +6,11 @@
 
 struct chest
 {
+
+private:
+	Vector2 pos;
+public:
+
 	Texture2D * fullAnim;
 	Texture2D * emptyAnim;
 	Texture2D * coinAnim;
@@ -17,7 +22,6 @@ struct chest
 	float coinElapsedTime;
 	bool drawingCoinFlip;
 
-	Vector2 pos;
 	int gold;
 	bool isOpen;
 	float frameTime;
@@ -30,5 +34,6 @@ struct chest
 
 	void update(player * p);
 	void draw();
+	void setPos(Vector2 pos);
 };
 

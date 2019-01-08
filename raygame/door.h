@@ -6,6 +6,9 @@
 
 struct door
 {
+private:
+	Vector2 pos;
+public:
 	Texture2D closed;
 	Texture2D left;
 	Texture2D right;
@@ -18,10 +21,9 @@ struct door
 
 	// State next;
 	bool isEntered;
-	Vector2 pos;
 	float elapsedTime;
 	float transitionTime;
-	std::string text;
+	std::string title;
 	// ready for next state
 	bool ready;
 
@@ -34,5 +36,6 @@ struct door
 	void update(player * p);
 	void draw();
 	void drawCol(int x, int y);
+	void setPos(Vector2 _pos);
 };
 

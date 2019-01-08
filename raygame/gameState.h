@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cassert>
+
 #include "raylib.h"
 
 #include "player.h"
@@ -12,7 +14,7 @@
 enum State 
 {
 	MainMenu = 0,
-	Room1,
+	Tutorial1,
 	GameOver
 };
 
@@ -33,62 +35,53 @@ enum State
 // pass player around to enemy classes with pointers
 // to modify values
 
+enum GameStates {
+	NONE,
+	MAINMENU,
+	TUTORIAL1,
+	TUTORIAL2,
+	LOSE
+};
+
 // this singleton class manages the use of
 // the current game state
 class gameState
 {
-	// prevents outside use
-	gameState();
-
-	State state;
-
-	// state functions
-	void mainMenu();
-	void room1();
-	void gameOver();
-
-	// init functions (put in ctor later)
-	void initRoom1();
-
-	player guy;
-	Rectangle floor;
-	// backgrounds
-	Texture2D * floors;
-	int floorCnt;
-	door startDoor;
-	door creditsDoor;
-	chest testChest;
-	wall w;
-
-	Rectangle * collisions;
-	int colsLen;
-	// num
-	int colsUsed;
-
-	demon * demons;
-	chest * chests;
-	door * doors;
-	// max per level
-	int demonCnt;
-	int chestCnt;
-	int doorCnt;
-	// used
-	int demonIdx;
-	int chestIdx;
-	int doorIdx;
 
 public:
+	Texture2D * floorTiles;
+	int floorTileCnt;
+	// bounds
+	Rectangle floor;
+	Rectangle * collisions;
+	int colCnt;
+	int colUsed;
 
+	wall * walls;
+	int maxWall;
+	int wallCnt;
+	demon * demons;
+	int maxDem;
+	int demonCnt;
+	chest * chests;
+	int maxChest;
+	int chestCnt;
+
+	player p;
+
+	gameState();
 	~gameState();
-	// use to init
-	static gameState & getInstance();
 
-	State getState();
-	void setState(State _state);
+	virtual void update();
+	virtual void draw();
+	virtual GameStates next() { return NONE; };
 
-	// main application function
-	void go();
 	void drawFloor();
-	void deleteCollision(Rectangle  & r);
+	// resets alloc vars
+	void reset();
+	// if outside alloc
+	void check();
 };
 
+// only ONE place where everything is tied together
+void setupGameState(gameState *&ptr, GameStates newState);
