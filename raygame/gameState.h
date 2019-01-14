@@ -40,6 +40,7 @@ enum GameStates {
 	MAINMENU,
 	TUTORIAL1,
 	TUTORIAL2,
+	TUTORIAL3,
 	LOSE
 };
 
@@ -81,6 +82,14 @@ public:
 	void reset();
 	// if outside alloc
 	void check();
+
+	void updateDemons(player * p);
+	void updateChests(player * p);
+	// RENDER ORDER!!
+	void drawWalls();
+	void drawDemons();
+	void drawChests();
+	void drawAll();
 };
 
 // only ONE place where everything is tied together

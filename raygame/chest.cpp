@@ -137,7 +137,7 @@ void chest::draw()
 	}
 }
 
-void chest::setPos(Vector2 _pos)
+void chest::setPosition(Vector2 _pos)
 {
 	pos = _pos;
 	rec.x = pos.x;

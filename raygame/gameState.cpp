@@ -3,6 +3,7 @@
 #include "menuState.h"
 #include "tutorial1State.h"
 #include "tutorial2State.h"
+#include "tutorial3State.h"
 
 #include "gameOverState.h"
 
@@ -13,6 +14,7 @@ void setupGameState(gameState *& ptr, GameStates newState)
 	case GameStates::MAINMENU: ptr = new menuState(); break;
 	case GameStates::TUTORIAL1: ptr = new tutorial1State(); break;
 	case GameStates::TUTORIAL2: ptr = new tutorial2State(); break;
+	case GameStates::TUTORIAL3: ptr = new tutorial3State(); break;
 	case GameStates::LOSE: ptr = new gameOverState(); break;
 
 	default: assert(false && "Invalid state specified");
@@ -101,4 +103,52 @@ void gameState::check()
 		probs += " exceeds max allocation";
 		assert(probs.c_str());
 	}
+}
+
+void gameState::updateDemons(player * p)
+{
+	for (int i = 0; i < demonCnt; i++)
+	{
+		demons[i].update(p);
+	}
+}
+
+void gameState::updateChests(player * p)
+{
+	for (int i = 0; i < chestCnt; i++)
+	{
+		chests[i].update(p);
+	}
+}
+
+void gameState::drawWalls()
+{
+	for (int i = 0; i < wallCnt; i++)
+	{
+		walls[i].draw();
+	}
+}
+
+void gameState::drawDemons()
+{
+	for (int i = 0; i < demonCnt; i++)
+	{
+		demons[i].draw();
+	}
+}
+
+void gameState::drawChests()
+{
+	for (int i = 0; i < chestCnt; i++)
+	{
+		chests[i].draw();
+	}
+}
+
+void gameState::drawAll()
+{
+	drawFloor();
+	drawWalls();
+	drawDemons();
+	drawChests();
 }

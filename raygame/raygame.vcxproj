@@ -142,6 +142,7 @@
     <ClCompile Include="player.cpp" />
     <ClCompile Include="tutorial1State.cpp" />
     <ClCompile Include="tutorial2State.cpp" />
+    <ClCompile Include="tutorial3State.cpp" />
     <ClCompile Include="wall.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -155,6 +156,7 @@
     <ClInclude Include="player.h" />
     <ClInclude Include="tutorial1State.h" />
     <ClInclude Include="tutorial2State.h" />
+    <ClInclude Include="tutorial3State.h" />
     <ClInclude Include="wall.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

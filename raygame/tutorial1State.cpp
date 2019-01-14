@@ -24,10 +24,12 @@ tutorial1State::tutorial1State()
 		collisions[colUsed++] = walls[i].rec;
 	}	
 
+	c.setPosition({ 350, 400 });
+	chests[chestCnt++] = c;
+
 	txt = "Use the WASD keys to move";
 
-	d.setPos({ 785, 360 });
-	c.setPos({ 350, 400 });
+	d.setPosition({ 785, 360 });
 
 	collisions[colUsed++] = c.rec;
 }
@@ -55,8 +57,8 @@ void tutorial1State::update()
 		txt = "Go through the door to the next room";
 	}
 
+	updateChests(&p);
 	d.update(&p);
-	c.update(&p);
 
 	next();
 }
@@ -65,15 +67,8 @@ void tutorial1State::draw()
 {
 	DrawText(txt.c_str(), 32, 16, 30, WHITE); 
 
-	drawFloor();
-
-	for (int i = 0; i < wallCnt; i++)
-	{
-		walls[i].draw();
-	}
-
+	drawAll();
 	d.draw();
-	c.draw();
 
 	p.draw();
 }

@@ -34,6 +34,6 @@ public:
 
 	void update(player * p);
 	void draw();
-	void setPos(Vector2 pos);
+	void setPosition(Vector2 pos);
 };
 

@@ -166,7 +166,7 @@ void player::update(Rectangle * cols, int len)
 				// use
 				// get cw-most angle
 				float x = GetMouseX() - (pos.x - idleSprites[0].width / 2);
-				float y = GetMouseY() - (pos.y - idleSprites[0].height / 2);
+				float y = GetMouseY() - (pos.y - idleSprites[0].height / 2) - 25;
 				float angleBetween = atan(y / x);
 				// int mod = 1;
 				if (x < 0) // xor

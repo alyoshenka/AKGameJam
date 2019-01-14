@@ -51,6 +51,9 @@
     <ClCompile Include="tutorial2State.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="tutorial3State.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="gameState.h">
@@ -84,6 +87,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="tutorial2State.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tutorial3State.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

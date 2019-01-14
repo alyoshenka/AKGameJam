@@ -97,7 +97,7 @@ void door::drawCol(int x, int y)
 	DrawTexture(colBase, x, y + colTop.height + colMid.height, WHITE);
 }
 
-void door::setPos(Vector2 _pos)
+void door::setPosition(Vector2 _pos)
 {
 	pos = _pos;
 	rec.x = pos.x;

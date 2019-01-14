@@ -1,17 +1,16 @@
 #pragma once
 #include "gameState.h"
 
-class tutorial2State : public gameState
+class tutorial3State : public gameState
 {
 	std::string txt;
 	door d;
 
 public:
-	tutorial2State();
+	tutorial3State();
 
 	void update();
 	void draw();
 
 	GameStates next();
 };
-

@@ -1,7 +1,7 @@
 #include "raylib.h"
-// #include "menuState.h"
+#include "menuState.h"
 
-#include "tutorial2State.h"
+#include "tutorial3State.h"
 
 #include <string>
 
@@ -16,8 +16,8 @@ int main()
 
 	/*gameState * stateInstance = new menuState();
 	GameStates currentState = MAINMENU;*/
-	gameState * stateInstance = new tutorial2State();
-	GameStates currentState = TUTORIAL2;
+	gameState * stateInstance = new tutorial3State();
+	GameStates currentState = TUTORIAL3;
 
 	SetTargetFPS(60);
 	//--------------------------------------------------------------------------------------

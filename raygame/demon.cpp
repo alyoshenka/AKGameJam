@@ -13,19 +13,22 @@ demon::demon()
 	animFrameTime = 0.2f;
 	animElapsedTime = 0.0f;
 
+	canAttack = true;
 	attackP = 10;
 	attackR = 0.0f;
 	attackMaxR = 100.0f;
 	attackTime = 5.0f;
-	attackElapsedTime = 0.0f;
+	attackElapsedTime = GetRandomValue(0, 2000) / 2000.0f;
 	isAttacking = false;
 	attackSpeed = 100.0f;
 	recharging = false;
 
-	health = 10;
+	maxHealth = 10;
+	curHealth = maxHealth;
 	hitByStaff = false;
 
 	alive = true;
+	active = true;
 
 	rec = {pos.x, pos.y, (float)idleAnim[0].width, (float)idleAnim[0].height};
 	center = { pos.x + idleAnim[0].width / 2, pos.y + idleAnim[0].height / 2 };
@@ -43,7 +46,7 @@ demon::~demon()
 
 bool demon::update(player * p)
 {
-	if (!alive)
+	if (!alive || !active)
 	{
 		// technically should be true but only want to delete collision once
 		return false;
@@ -62,7 +65,7 @@ bool demon::update(player * p)
 	}
 
 	attackElapsedTime += GetFrameTime();
-	if (attackElapsedTime >= attackTime)
+	if (attackElapsedTime >= attackTime && canAttack)
 	{
 		attackElapsedTime = 0.0f;
 		isAttacking = true;
@@ -129,8 +132,8 @@ bool demon::update(player * p)
 		if (CheckCollisionRecs(rec, b))
 		{
 			p->bullets[i].pos = {-100, -100};
-			health -= p->bulletP;
-			std::cout << health << std::endl;
+			curHealth -= p->bulletP;
+			std::cout << curHealth << std::endl;
 		}
 	}
 
@@ -147,28 +150,25 @@ bool demon::update(player * p)
 		! hitByStaff && (p->staffIsRotating || p->staffIsHolding))
 	{
 		hitByStaff = true;
-		health -= p->staffP;
+		curHealth -= p->staffP;
 
-		std::cout << health << std::endl;
+		std::cout << curHealth << std::endl;
 	}
 
 	// if died this turn
-	if (health <= 0)
+	if (curHealth <= 0)
 	{
 		alive = false;
 		pos = { -100, -100 };	
 		return true;
 	}
 
-	rec.x = pos.x;
-	rec.y = pos.y;
-
 	return false;
 }
 
 void demon::draw()
 {
-	if (!alive)
+	if (!alive || !active)
 	{
 		return;
 	}
@@ -181,6 +181,33 @@ void demon::draw()
 			attackR, c);
 	}
 	DrawTextureV(idleAnim[curFrame], pos, WHITE);
+	drawHealthBar();
+}
+
+void demon::drawHealthBar()
+{
+	Color c = GREEN;
+	float percent = (float)curHealth / maxHealth;
+	// add more points for bosses
+	if (percent <= 0.5)
+	{
+		c = ORANGE;
+	}
+	Vector2 hbPos = pos;
+	// float barSize = 5;
+	hbPos.y += rec.height + 5;
+	// base
+	DrawRectangleV(hbPos, { rec.width, 9 }, BLACK);
+	// health
+	DrawRectangle(hbPos.x + 2, hbPos.y + 2, (rec.width - 4) * percent, 5, c);
+}
+
+void demon::setPosition(Vector2 _pos)
+{
+	pos = _pos;
+	rec.x = pos.x;
+	rec.y = pos.y;
+	center = { pos.x + idleAnim[0].width / 2, pos.y + idleAnim[0].height / 2 };
 }
 
 

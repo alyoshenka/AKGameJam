@@ -4,7 +4,7 @@ menuState::menuState()
 {
 	p.pos = { 100, 100 };
 
-	startDoor.setPos({ 200.0f, (float)startDoor.closed.height });
+	startDoor.setPosition({ 200.0f, (float)startDoor.closed.height });
 	startDoor.title = "Start Game";
 }
 
