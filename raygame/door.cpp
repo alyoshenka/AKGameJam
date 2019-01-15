@@ -16,7 +16,7 @@ door::door()
 	isEntered = false;
 	elapsedTime = 0.0f;
 	transitionTime = 1.0f;
-	title = "insert text here";
+	title = "Next room";
 	ready = false;
 
 	rec = {pos.x + open.width / 2, pos.y - open.height / 2, 

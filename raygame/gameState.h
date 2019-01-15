@@ -8,6 +8,7 @@
 #include "door.h"
 #include "chest.h"
 #include "demon.h"
+#include "goblin.h"
 #include "wall.h"
 
 // states
@@ -35,13 +36,22 @@ enum State
 // pass player around to enemy classes with pointers
 // to modify values
 
-enum GameStates {
-	NONE,
+enum GameStates 
+{
+	NONE = 0,
 	MAINMENU,
 	TUTORIAL1,
 	TUTORIAL2,
 	TUTORIAL3,
+	JUMP1,
+	TEST,
 	LOSE
+};
+
+enum LevelType
+{
+	TOP = 0,
+	SIDE
 };
 
 // this singleton class manages the use of
@@ -53,7 +63,12 @@ public:
 	Texture2D * floorTiles;
 	int floorTileCnt;
 	// bounds
-	Rectangle floor;
+	Rectangle floor;	
+	// used to keep player inside floor
+	Rectangle l;
+	Rectangle r;
+	Rectangle t;
+	Rectangle b;
 	Rectangle * collisions;
 	int colCnt;
 	int colUsed;

@@ -57,11 +57,13 @@ struct player
 
 	// combat
 	// knives
+	bool canThrow;
 	int bulletP;
 	int bulletCnt;
 	int maxShots;
 	float bulletSpeed;
 	// staff
+	bool canStab;
 	int staffP;
 	// deg
 	float staffRot;
@@ -81,5 +83,7 @@ struct player
 	void drawStats();
 
 	bool checkCollision(Rectangle * cols, int len);
+	// reset vars between levels
+	void reset();
 };
 

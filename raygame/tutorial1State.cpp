@@ -36,7 +36,6 @@ tutorial1State::tutorial1State()
 
 tutorial1State::~tutorial1State()
 {
-	delete[] walls;
 }
 
 void tutorial1State::update()

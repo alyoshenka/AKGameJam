@@ -30,6 +30,8 @@ player::player()
 	maxHealth = 100;
 	curHealth = maxHealth;
 	fov = 5.0f;
+	
+	canThrow = true;
 	bulletCnt = 1;
 	maxShots = 10;
 	bulletSpeed = 200.0f;
@@ -45,6 +47,7 @@ player::player()
 
 	frozen = false;
 
+	canStab = true;
 	staffRot = 0.0f;
 	staffIsRotating = false;
 	staffIsHolding = false;
@@ -150,7 +153,7 @@ void player::update(Rectangle * cols, int len)
 	}
 
 	// shooting
-	if (IsMouseButtonPressed(0))
+	if (IsMouseButtonPressed(0) && canThrow)
 	{
 		// check for unused
 		for (int i = 0; i < maxShots; i++)
@@ -192,7 +195,7 @@ void player::update(Rectangle * cols, int len)
 		}
 	}
 
-	if (IsMouseButtonPressed(1))
+	if (IsMouseButtonPressed(1) && canStab)
 	{
 		staffIsHolding = true;
 	}
@@ -293,7 +296,7 @@ void player::draw()
 		DrawCircle(pos.x + idleSprites[0].width / 2,
 			pos.y + idleSprites[0].height / 2, staff.height, w);
 		DrawTextureEx(staff, { pos.x + idleSprites[0].width / 2,
-			pos.y + idleSprites[0].height / 2 }, staffRot, 1.0f, WHITE);
+			pos.y + idleSprites[0].height / 2 }, staffRot - 90, 1.0f, WHITE);
 	}
 
 	// choose which sprite to use
@@ -367,4 +370,15 @@ bool player::checkCollision(Rectangle * cols, int len)
 
 	return false;
 }
+
+void player::reset()
+{
+	pos = { 100, 100 };
+
+	canStab = true;
+	canThrow = true;
+	frozen = false;
+}
+
+
 

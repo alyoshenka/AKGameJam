@@ -22,7 +22,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{100AB646-1529-43F3-B9D1-2C0A798642FF}</ProjectGuid>
     <RootNamespace>raygame</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -136,10 +136,14 @@
     <ClCompile Include="door.cpp" />
     <ClCompile Include="gameOverState.cpp" />
     <ClCompile Include="gameState.cpp" />
+    <ClCompile Include="goblin.cpp" />
+    <ClCompile Include="jump1State.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="menuState.cpp" />
     <ClCompile Include="particleEffect.cpp" />
+    <ClCompile Include="physicsObject.cpp" />
     <ClCompile Include="player.cpp" />
+    <ClCompile Include="testState.cpp" />
     <ClCompile Include="tutorial1State.cpp" />
     <ClCompile Include="tutorial2State.cpp" />
     <ClCompile Include="tutorial3State.cpp" />
@@ -151,9 +155,13 @@
     <ClInclude Include="door.h" />
     <ClInclude Include="gameOverState.h" />
     <ClInclude Include="gameState.h" />
+    <ClInclude Include="goblin.h" />
+    <ClInclude Include="jump1State.h" />
     <ClInclude Include="menuState.h" />
     <ClInclude Include="particleEffect.h" />
+    <ClInclude Include="physicsObject.h" />
     <ClInclude Include="player.h" />
+    <ClInclude Include="testState.h" />
     <ClInclude Include="tutorial1State.h" />
     <ClInclude Include="tutorial2State.h" />
     <ClInclude Include="tutorial3State.h" />

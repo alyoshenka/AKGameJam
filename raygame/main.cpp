@@ -1,9 +1,13 @@
 #include "raylib.h"
 #include "menuState.h"
 
-#include "tutorial3State.h"
+// #include "tutorial3State.h"
+#include "testState.h"
 
 #include <string>
+
+// addCollision()
+// how should i do physics?
 
 int main()
 {
@@ -16,8 +20,8 @@ int main()
 
 	/*gameState * stateInstance = new menuState();
 	GameStates currentState = MAINMENU;*/
-	gameState * stateInstance = new tutorial3State();
-	GameStates currentState = TUTORIAL3;
+	gameState * stateInstance = new testState();
+	GameStates currentState = TEST;
 
 	SetTargetFPS(60);
 	//--------------------------------------------------------------------------------------
